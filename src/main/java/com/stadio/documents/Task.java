@@ -7,20 +7,21 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 
+@Document(collection = "task")
 @Data
-@Document(collection = "tab_notification")
-public class Notification {
+public class Task {
+
     @Id
     private String id;
 
-    @Field(value = "title")
-    private String title;
+    @Field(value = "name")
+    private String name;
 
-    @Field(value = "message")
-    private String message;
+    @Field(value = "description")
+    private String description;
 
-    @Field(value = "payload")
-    private String payload;
+    @Field(value = "expire")
+    private Date expire;
 
     @Field(value = "created_date")
     private Date createdDate;
@@ -28,8 +29,9 @@ public class Notification {
     @Field(value = "updated_date")
     private Date updatedDate;
 
-    public Notification(String title, String message){
-        this.createdDate = new Date();
-        this.updatedDate = new Date();
-    }
+    @Field(value = "exp")
+    private int exp;
+
+    @Field(value = "bonus")
+    private int bonus;
 }

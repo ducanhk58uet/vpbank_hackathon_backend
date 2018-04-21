@@ -54,12 +54,14 @@ public class Customer {
     @Field(value = "use_dream")
     private int useDream;
 
-    /**
-     * Mot so truong ao them vao, khong co trong database
-     */
-
-    @Transient
+    @Field(value = "point")
     private int point;
+
+   @Field(value = "exp")
+   private int exp;
+
+   @Field(value = "rank_id")
+   private String rank_id;
 
     public Customer(String fullname, String customerId, Date joinDate, int debitCardTransactionsCount,
                     int creditCardTransactionsCount, int withdrawalCounts, int depositsCount,

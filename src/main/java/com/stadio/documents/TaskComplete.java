@@ -7,29 +7,28 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 
+@Document(collection = "task_complete")
 @Data
-@Document(collection = "tab_notification")
-public class Notification {
+public class TaskComplete {
+
     @Id
     private String id;
 
-    @Field(value = "title")
-    private String title;
+    @Field(value = "customer_id")
+    private String customerId;
 
-    @Field(value = "message")
-    private String message;
+    @Field(value = "task_id")
+    private String taskId;
 
-    @Field(value = "payload")
-    private String payload;
+    @Field(value = "completed_time")
+    private Date completedTime;
+
+    @Field(value = "status")
+    private int status;
 
     @Field(value = "created_date")
     private Date createdDate;
 
     @Field(value = "updated_date")
     private Date updatedDate;
-
-    public Notification(String title, String message){
-        this.createdDate = new Date();
-        this.updatedDate = new Date();
-    }
 }
