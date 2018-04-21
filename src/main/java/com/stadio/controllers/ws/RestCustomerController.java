@@ -1,5 +1,6 @@
-package com.stadio.controllers;
+package com.stadio.controllers.ws;
 
+import com.stadio.controllers.BaseController;
 import com.stadio.documents.Customer;
 import com.stadio.model.ResponseObject;
 import com.stadio.repository.CustomerRepository;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "api/customer")
-public class CustomerController extends BaseController {
+public class RestCustomerController extends BaseController {
 
     @Autowired
     CustomerRepository customerRepository;
