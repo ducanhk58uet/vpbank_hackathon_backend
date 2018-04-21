@@ -5,9 +5,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "rank")
+import java.util.Date;
+
 @Data
-public class Rank {
+@Document(collection = "gift")
+public class Gift {
 
     @Id
     private String id;
@@ -15,17 +17,12 @@ public class Rank {
     @Field(value = "name")
     private String name;
 
-    @Field(value = "image_url")
-    private String imageUrl;
+    @Field(value = "quantity")
+    private int quantity;
 
-    @Field(value = "type")
-    private String type;
+    @Field(value = "created_date")
+    private Date createdDate;
 
-    @Field(value = "description")
-    private String description;
-
-    @Field(value = "condition")
-    private String condition;
-
-
+    @Field(value = "updated_date")
+    private Date updatedDate;
 }
