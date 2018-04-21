@@ -1,3 +1,38 @@
 <div xmlns:th="http://www.thymeleaf.org" th:fragment="task">
-    Task
+    <table class="table table-hover table-striped table-border">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên nhiệm vụ</th>
+            <th>Trạng thái</th>
+            <th>Điểm thưởng</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0001</td>
+                <td>Đăng ký Internet Banking</td>
+                <td>Chưa hoàn thành</td>
+                <td>+100</td>
+            </tr>
+            <tr>
+                <td>0002</td>
+                <td>Đăng ký VPBankPlus</td>
+                <td><span style="color: blue;">Hoàn thành</span></td>
+                <td>+50</td>
+            </tr>
+            <tr>
+                <td>0003</td>
+                <td>Mua thẻ cào qua ứng dụng VPBankPlus</td>
+                <td>Chưa hoàn thành</td>
+                <td>+50</td>
+            </tr>
+            <tr>
+                <td>0004</td>
+                <td>Thanh toán dịch vụ điện nước</td>
+                <td>Chưa hoàn thành</td>
+                <td>+50</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
