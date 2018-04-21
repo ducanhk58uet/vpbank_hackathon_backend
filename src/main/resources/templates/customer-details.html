@@ -6,8 +6,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src='http://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
 
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/customer.css}">
@@ -22,14 +25,26 @@
 
             <div class="profile-sidebar">
                 <!-- SIDEBAR USERPIC -->
-                <div class="profile-userpic">
-                    <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                <div class="profile-userpic" th:if="${customer.point lt 1000}">
+                    <img th:src="@{/images/ic_sliver.png}" class="img-responsive" alt="">
+                    <p class="label-ranking">Bạc</p>
+                </div>
+                <div class="profile-userpic" th:if="${customer.point gt 1000 and customer.point lt 2000}">
+                    <img th:src="@{/images/ic_golder.png}" class="img-responsive" alt="">
+                    <p class="label-ranking">Vàng</p>
+                </div>
+                <div class="profile-userpic" th:if="${customer.point gt 2000}">
+                    <img th:src="@{/images/ic_diamond.png}" class="img-responsive" alt="">
+                    <p class="label-ranking">Kim cương</p>
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name" th:text="${customer.fullname}"></div>
                     <div class="profile-usertitle-job" th:text="${customer.customerId}"></div>
+                    <div>
+                        <i class="fa fa-flask" aria-hidden="true"></i> <span th:text="${customer.point}"></span> exp
+                    </div>
                 </div>
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
@@ -41,17 +56,26 @@
                 <!-- SIDEBAR MENU -->
                 <div class="profile-usermenu">
                     <ul class="nav">
-                        <li class="active">
-                            <a href="#"><i class="fa fa-home"></i>Vườn nhà </a>
+                        <li th:class="${'home'.equals(tab) ? 'active' : ''}">
+                            <a th:href="@{'/customer/' + ${customer.customerId}}"><i class="fa fa-home"></i>Vườn nhà </a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-user"></i>Cài đặt tài khoản </a>
+                        <li th:class="${'storage'.equals(tab) ? 'active' : ''}">
+                            <a th:href="@{'/customer/' + ${customer.customerId} + '/storage'}"><i class="fa fa-suitcase"></i>Rương quà tặng </a>
                         </li>
-                        <li>
-                            <a href="#" target="_blank"><i class="fa fa-ok"></i>Hệ thống nhiệm vụ </a>
+                        <li th:class="${'task'.equals(tab) ? 'active' : ''}">
+                            <a th:href="@{'/customer/' + ${customer.customerId} + '/task'}" ><i class="fa fa-check"></i>Hệ thống nhiệm vụ </a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-flag"></i>Giúp đỡ </a>
+                        <li th:class="${'friends'.equals(tab) ? 'active' : ''}">
+                            <a th:href="@{'/customer/' + ${customer.customerId} + '/friends'}" ><i class="fa fa-address-book"></i>Bạn bè </a>
+                        </li>
+                        <li th:class="${'invite'.equals(tab) ? 'active' : ''}">
+                            <a  th:href="@{'/customer/' + ${customer.customerId} + '/invite'}"><i class="fa fa-envelope"></i>Lời mời </a>
+                        </li>
+                        <li th:class="${'settings'.equals(tab) ? 'active' : ''}">
+                            <a th:href="@{'/customer/' + ${customer.customerId} + '/settings'}"><i class="fa fa-user"></i>Cài đặt tài khoản </a>
+                        </li>
+                        <li th:class="${'help'.equals(tab) ? 'active' : ''}">
+                            <a th:href="@{'/customer/' + ${customer.customerId} + '/help'}"><i class="fa fa-flag"></i>Giúp đỡ </a>
                         </li>
                     </ul>
                 </div>
@@ -60,11 +84,29 @@
         </div>
         <div class="col-md-9">
             <div class="profile-content">
-                Some user related content goes here...
+                <div th:if="${'home'.equals(tab)}">
+                    <div th:replace="customer/home :: home"></div>
+                </div>
+                <div th:if="${'task'.equals(tab)}">
+                    <div th:replace="customer/task :: task"></div>
+                </div>
+                <div th:if="${'friends'.equals(tab)}">
+                    <div th:replace="customer/friends :: friends"></div>
+                </div>
+                <div th:if="${'invite'.equals(tab)}">
+                    <div th:replace="customer/invite :: invite"></div>
+                </div>
+                <div th:if="${'settings'.equals(tab)}">
+                    <div th:replace="customer/settings :: settings"></div>
+                </div>
+                <div th:if="${'help'.equals(tab)}">
+                    <div th:replace="customer/settings :: settings"></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 </body>
 </html>

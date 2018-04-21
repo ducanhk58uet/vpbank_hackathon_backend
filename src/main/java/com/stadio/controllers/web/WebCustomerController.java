@@ -40,8 +40,98 @@ public class WebCustomerController extends BaseController {
         if (customer == null) {
             return "redirect:/customer";
         }
-        model.put("customer", customer);
+        initCommonProfile(model, customer);
+        model.put("tab", "home");
+        return "customer-details";
+    }
+
+    @GetMapping(value = "/{customerId}/task")
+    public String task(@PathVariable String customerId,
+                       Map<String, Object> model) {
+        Customer customer = customerRepository.findByCustomerId(customerId);
+        if (customer == null) {
+            return "redirect:/customer";
+        }
+        initCommonProfile(model, customer);
+        model.put("tab", "task");
+        return "customer-details";
+    }
+
+    @GetMapping(value = "/{customerId}/friends")
+    public String friends(@PathVariable String customerId,
+                       Map<String, Object> model) {
+        Customer customer = customerRepository.findByCustomerId(customerId);
+        if (customer == null) {
+            return "redirect:/customer";
+        }
+        initCommonProfile(model, customer);
+        model.put("tab", "friends");
 
         return "customer-details";
+    }
+
+    @GetMapping(value = "/{customerId}/invite")
+    public String invite(@PathVariable String customerId,
+                          Map<String, Object> model) {
+        Customer customer = customerRepository.findByCustomerId(customerId);
+        if (customer == null) {
+            return "redirect:/customer";
+        }
+        initCommonProfile(model, customer);
+        model.put("tab", "invite");
+
+        return "customer-details";
+    }
+
+    @GetMapping(value = "/{customerId}/help")
+    public String help(@PathVariable String customerId,
+                          Map<String, Object> model) {
+        Customer customer = customerRepository.findByCustomerId(customerId);
+        if (customer == null) {
+            return "redirect:/customer";
+        }
+        initCommonProfile(model, customer);
+        model.put("tab", "help");
+
+        return "customer-details";
+    }
+
+    @GetMapping(value = "/{customerId}/settings")
+    public String settings(@PathVariable String customerId,
+                       Map<String, Object> model) {
+        Customer customer = customerRepository.findByCustomerId(customerId);
+        if (customer == null) {
+            return "redirect:/customer";
+        }
+        initCommonProfile(model, customer);
+        model.put("tab", "settings");
+
+        return "customer-details";
+    }
+
+    @GetMapping(value = "/{customerId}/storage")
+    public String storage(@PathVariable String customerId,
+                           Map<String, Object> model) {
+        Customer customer = customerRepository.findByCustomerId(customerId);
+        if (customer == null) {
+            return "redirect:/customer";
+        }
+        initCommonProfile(model, customer);
+        model.put("tab", "storage");
+
+        return "customer-details";
+    }
+
+    private void initCommonProfile(Map<String, Object> model, Customer customer) {
+        int point = customer.getCreditCardTransactionsCount()
+                + customer.getDebitCardTransactionsCount()
+                + customer.getDepositsCount()
+                + customer.getTelcoTopupsCount()
+                + customer.getUtilityPaymentsCount()
+                + customer.getWithdrawalCounts();
+
+        customer.setPoint(point);
+
+        model.put("customer", customer);
     }
 }

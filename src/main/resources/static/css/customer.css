@@ -28,6 +28,7 @@ body {
     -webkit-border-radius: 50% !important;
     -moz-border-radius: 50% !important;
     border-radius: 50% !important;
+    text-align: center;
 }
 
 .profile-usertitle {
@@ -93,6 +94,10 @@ body {
 .profile-usermenu ul li a:hover {
     background-color: #fafcfd;
     color: #5b9bd1;
+}
+
+.label-ranking {
+    text-align: center;
 }
 
 .profile-usermenu ul li.active {
