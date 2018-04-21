@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @Document(collection = "customers")
-public class Customers {
+public class Customer {
 
     @Id
     private String id;
@@ -18,7 +18,7 @@ public class Customers {
     private String fullname;
 
     @Field(value = "customer_id")
-    private long customer_id;
+    private long customerId;
 
     @Field(value = "join_date")
     private Date joinDate;
