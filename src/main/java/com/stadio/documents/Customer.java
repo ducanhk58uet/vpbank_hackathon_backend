@@ -2,6 +2,7 @@ package com.stadio.documents;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -18,7 +19,7 @@ public class Customer {
     private String fullname;
 
     @Field(value = "customer_id")
-    private long customerId;
+    private String customerId;
 
     @Field(value = "join_date")
     private Date joinDate;
@@ -42,16 +43,41 @@ public class Customer {
     private int utilityPaymentsCount;
 
     @Field(value = "has_credit_card")
-    private boolean hasCreditCard;
+    private int hasCreditCard;
 
     @Field(value = "has_internet_banking")
-    private boolean hasInternetBanking;
+    private int hasInternetBanking;
 
     @Field(value = "use_vpbankplus")
-    private boolean useVpbankplus;
+    private int useVpbankplus;
 
     @Field(value = "use_dream")
-    private boolean use_dream;
+    private int useDream;
 
+    /**
+     * Mot so truong ao them vao, khong co trong database
+     */
 
+    @Transient
+    private int point;
+
+    public Customer(String fullname, String customerId, Date joinDate, int debitCardTransactionsCount,
+                    int creditCardTransactionsCount, int withdrawalCounts, int depositsCount,
+                    int telcoTopupsCount, int utilityPaymentsCount, int hasCreditCard,
+                    int hasInternetBanking, int useVpbankplus, int useDream) {
+        this.fullname = fullname;
+        this.customerId = customerId;
+        this.joinDate = joinDate;
+        this.debitCardTransactionsCount = debitCardTransactionsCount;
+        this.creditCardTransactionsCount = creditCardTransactionsCount;
+        this.withdrawalCounts = withdrawalCounts;
+        this.depositsCount = depositsCount;
+        this.telcoTopupsCount = telcoTopupsCount;
+        this.utilityPaymentsCount = utilityPaymentsCount;
+        this.hasCreditCard = hasCreditCard;
+        this.hasInternetBanking = hasInternetBanking;
+        this.useVpbankplus = useVpbankplus;
+        this.useDream = useDream;
+
+    }
 }
