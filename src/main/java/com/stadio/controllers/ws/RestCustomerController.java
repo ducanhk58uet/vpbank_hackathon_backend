@@ -18,7 +18,7 @@ public class RestCustomerController extends BaseController {
     }
 
     @GetMapping(value = "/profile/")
-    public ResponseObject getUserProfile(@RequestParam(value = "id") long id) {
+    public ResponseObject getUserProfile(@RequestParam(value = "id") String id) {
         Customer customer = customerRepository.findByCustomerId(id);
         return ResponseObject.success(customer);
     }

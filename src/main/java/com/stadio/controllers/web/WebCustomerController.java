@@ -4,6 +4,7 @@ import com.stadio.controllers.BaseController;
 import com.stadio.documents.Customer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -30,5 +31,17 @@ public class WebCustomerController extends BaseController {
 
         model.put("customerList", customerList);
         return "customer-list";
+    }
+
+    @GetMapping(value = "/{customerId}")
+    public String profile(@PathVariable String customerId,
+                          Map<String, Object> model) {
+        Customer customer = customerRepository.findByCustomerId(customerId);
+        if (customer == null) {
+            return "redirect:/customer";
+        }
+        model.put("customer", customer);
+
+        return "customer-details";
     }
 }

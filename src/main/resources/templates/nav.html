@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse" xmlns:th="http://www.thymeleaf.org" th:fragment="nav">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/customer">
+                UP Plant Tree
+            </a>
+        </div>
+        <div id="navbar" class="container-fluid">
+            <ul class="nav navbar-nav">
+                <li><a href="/customer">Khách hàng</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Giao dịch<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/transaction">Thống kê giao dịch</a></li>
+                        <li><a href="/transaction/form">Tạo giao dịch</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
