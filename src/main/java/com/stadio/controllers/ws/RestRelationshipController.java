@@ -14,7 +14,7 @@ public class RestRelationshipController extends BaseController {
      * Lay danh sach moi ban be
      * @return
      */
-    @GetMapping(value = "/inviteList")
+    @GetMapping(value = "/invite/list")
     public ResponseObject inviteList() {
         return ResponseObject.success(null);
     }
@@ -32,13 +32,26 @@ public class RestRelationshipController extends BaseController {
      * Huy yeu cau ket ban
      * @return
      */
-    @GetMapping(value = "/requestCancel")
+    @GetMapping(value = "/request/cancel")
     public ResponseObject requestCancel() {
         return ResponseObject.success(null);
     }
 
-    @GetMapping(value = "/friends")
+    /**
+     * Danh sach ban be
+     * @return
+     */
+    @GetMapping(value = "/friend/list")
     public ResponseObject friendList() {
+        return ResponseObject.success(null);
+    }
+
+    /**
+     * Xoa ban be
+     * @return
+     */
+    @GetMapping(value = "/friend/remove")
+    public ResponseObject friendRemove() {
         return ResponseObject.success(null);
     }
 
