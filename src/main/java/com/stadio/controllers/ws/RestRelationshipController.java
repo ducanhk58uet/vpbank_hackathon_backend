@@ -2,9 +2,7 @@ package com.stadio.controllers.ws;
 
 import com.stadio.controllers.BaseController;
 import com.stadio.model.ResponseObject;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "api/relationship")
@@ -24,7 +22,17 @@ public class RestRelationshipController extends BaseController {
      * @return
      */
     @GetMapping(value = "/request")
-    public ResponseObject request() {
+    public ResponseObject request(@RequestParam(value = "customerId") String customerId) {
+        return ResponseObject.success(null);
+    }
+
+    /**
+     * Dong y ket ban
+     * @param inviteId
+     * @return
+     */
+    @PostMapping(value = "/invite/accept")
+    public ResponseObject inviteAccept(@RequestParam(value = "inviteId") String inviteId) {
         return ResponseObject.success(null);
     }
 
@@ -33,9 +41,10 @@ public class RestRelationshipController extends BaseController {
      * @return
      */
     @GetMapping(value = "/request/cancel")
-    public ResponseObject requestCancel() {
+    public ResponseObject requestCancel(@RequestParam(value = "inviteId") String inviteId) {
         return ResponseObject.success(null);
     }
+
 
     /**
      * Danh sach ban be
@@ -51,7 +60,7 @@ public class RestRelationshipController extends BaseController {
      * @return
      */
     @GetMapping(value = "/friend/remove")
-    public ResponseObject friendRemove() {
+    public ResponseObject friendRemove(@RequestParam(value = "friendId") String friendId) {
         return ResponseObject.success(null);
     }
 
